@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activity History — CarePulse Senior Care</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body class="min-h-screen bg-[#0c111d] text-slate-100 flex flex-col">
+
+    <!-- Top Navigation Bar -->
+    <header class="border-b border-[#1f293d] bg-[#111726] sticky top-0 z-30">
+        <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-8">
+                <a href="/" class="flex items-center gap-2.5">
+                    <div class="w-8 h-8 rounded-lg bg-teal-600 flex items-center justify-center font-bold text-white text-base">
+                        C
+                    </div>
+                    <div>
+                        <span class="font-semibold text-sm tracking-tight text-white block">CarePulse</span>
+                        <span class="text-[11px] text-slate-400 block -mt-1">Elderly Care Monitoring</span>
+                    </div>
+                </a>
+
+                <nav class="hidden md:flex items-center gap-1 text-xs font-medium">
+                    <a href="/" class="px-3 py-1.5 rounded-md text-slate-400 hover:text-slate-200 hover:bg-[#161f30] transition">Live Monitor</a>
+                    <a href="/history" class="px-3 py-1.5 rounded-md bg-[#1c2638] text-white">Activity History</a>
+                    <a href="/alerts" class="px-3 py-1.5 rounded-md text-slate-400 hover:text-slate-200 hover:bg-[#161f30] transition flex items-center gap-1.5">
+                        Fall Alerts
+                        <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                    </a>
+                    <a href="/patient" class="px-3 py-1.5 rounded-md text-slate-400 hover:text-slate-200 hover:bg-[#161f30] transition">Patient Profile</a>
+                    <a href="/device" class="px-3 py-1.5 rounded-md text-slate-400 hover:text-slate-200 hover:bg-[#161f30] transition">Wearable Device</a>
+                </nav>
+            </div>
+
+            <div class="flex items-center gap-2.5">
+                <div class="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center text-xs font-medium text-slate-200">
+                    SJ
+                </div>
+                <div class="hidden sm:block text-left">
+                    <div class="text-xs font-medium text-slate-200">Sarah Jenkins, RN</div>
+                    <div class="text-[11px] text-slate-400">Primary Caregiver</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-6xl w-full mx-auto px-6 py-8 flex-1 space-y-8">
+
+        <!-- Page Header & Filters -->
+        <section class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+                <h1 class="text-xl font-bold text-white">Activity History & Timeline</h1>
+                <p class="text-xs text-slate-400 mt-1">Review chronological movements and posture trends for Eleanor Vance</p>
+            </div>
+
+            <!-- Date Selector Pills -->
+            <div class="flex items-center gap-2 bg-[#161e2e] p-1 rounded-lg border border-[#243046] text-xs">
+                <button class="px-3 py-1.5 rounded-md bg-teal-700 text-white font-medium">Today</button>
+                <button class="px-3 py-1.5 rounded-md text-slate-400 hover:text-slate-200">Yesterday</button>
+                <button class="px-3 py-1.5 rounded-md text-slate-400 hover:text-slate-200">Past 7 Days</button>
+            </div>
+        </section>
+
+        <!-- Daily Metrics Breakdown Cards -->
+        <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div class="clean-card p-5">
+                <span class="text-xs text-slate-400 block">Total Active Walking</span>
+                <div class="text-2xl font-bold text-white mt-1">1h 45m</div>
+                <span class="text-[11px] text-teal-400 mt-1 block">Normal daily target met</span>
+            </div>
+
+            <div class="clean-card p-5">
+                <span class="text-xs text-slate-400 block">Stairs (Elevation Steps)</span>
+                <div class="text-2xl font-bold text-white mt-1">28 mins</div>
+                <span class="text-[11px] text-slate-400 mt-1 block">Steady pace, no pauses</span>
+            </div>
+
+            <div class="clean-card p-5">
+                <span class="text-xs text-slate-400 block">Sedentary / Seated</span>
+                <div class="text-2xl font-bold text-white mt-1">5h 20m</div>
+                <span class="text-[11px] text-amber-400 mt-1 block">Prompted light stretch at 15:00</span>
+            </div>
+
+            <div class="clean-card p-5">
+                <span class="text-xs text-slate-400 block">Resting / Sleeping</span>
+                <div class="text-2xl font-bold text-white mt-1">7h 40m</div>
+                <span class="text-[11px] text-slate-400 mt-1 block">Night sleep + 1h afternoon nap</span>
+            </div>
+        </section>
+
+        <!-- 24-Hour Timeline Ribbon -->
+        <section class="clean-card p-6">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-sm font-semibold text-white">24-Hour Activity Ribbon</h2>
+                <div class="flex items-center gap-4 text-xs text-slate-400">
+                    <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded bg-teal-500"></span> Walking</span>
+                    <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded bg-amber-500"></span> Sitting</span>
+                    <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded bg-purple-500"></span> Stairs</span>
+                    <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded bg-slate-500"></span> Resting</span>
+                </div>
+            </div>
+
+            <!-- Ribbon Strip -->
+            <div class="h-6 w-full rounded-md overflow-hidden flex bg-slate-800">
+                <div class="bg-slate-600 h-full" style="width: 25%" title="00:00 - 06:00: Sleep (Lying)"></div>
+                <div class="bg-teal-500 h-full" style="width: 8%" title="06:00 - 07:55: Morning Walk"></div>
+                <div class="bg-amber-500 h-full" style="width: 15%" title="08:00 - 11:30: Breakfast & Reading (Sitting)"></div>
+                <div class="bg-purple-500 h-full" style="width: 4%" title="11:30 - 12:30: Upstairs Movement"></div>
+                <div class="bg-amber-500 h-full" style="width: 12%" title="12:30 - 15:20: Lunch & TV"></div>
+                <div class="bg-slate-600 h-full" style="width: 10%" title="15:20 - 17:40: Afternoon Rest"></div>
+                <div class="bg-teal-500 h-full" style="width: 14%" title="17:40 - 21:00: Evening Walk"></div>
+                <div class="bg-amber-500 h-full" style="width: 12%" title="21:00 - Now: Sitting"></div>
+            </div>
+
+            <div class="flex justify-between text-[11px] text-slate-400 font-mono mt-2">
+                <span>12 AM</span>
+                <span>4 AM</span>
+                <span>8 AM</span>
+                <span>12 PM</span>
+                <span>4 PM</span>
+                <span>8 PM</span>
+                <span>Now</span>
+            </div>
+        </section>
+
+        <!-- Chronological Table of Recorded Intervals -->
+        <section class="clean-card p-6">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-sm font-semibold text-white">Recorded Movement Intervals</h2>
+                <span class="text-xs text-slate-400">14 intervals logged today</span>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-xs border-collapse">
+                    <thead>
+                        <tr class="border-b border-[#243046] text-slate-400 font-medium">
+                            <th class="py-3 px-4">Time Interval</th>
+                            <th class="py-3 px-4">Activity</th>
+                            <th class="py-3 px-4">Duration</th>
+                            <th class="py-3 px-4">Context & Location</th>
+                            <th class="py-3 px-4">Posture Stability</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-[#1e283b] text-slate-300">
+                        <tr>
+                            <td class="py-3 px-4 font-mono text-slate-200">20:15 - 21:20</td>
+                            <td class="py-3 px-4"><span class="status-pill status-neutral">Sitting</span></td>
+                            <td class="py-3 px-4">1h 5m</td>
+                            <td class="py-3 px-4 text-slate-400">Living room couch (evening television)</td>
+                            <td class="py-3 px-4 text-emerald-400">Steady</td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 px-4 font-mono text-slate-200">19:45 - 20:15</td>
+                            <td class="py-3 px-4"><span class="status-pill status-active">Standing</span></td>
+                            <td class="py-3 px-4">30 mins</td>
+                            <td class="py-3 px-4 text-slate-400">Kitchen counter, preparing herbal tea</td>
+                            <td class="py-3 px-4 text-emerald-400">Steady</td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 px-4 font-mono text-slate-200">19:30 - 19:45</td>
+                            <td class="py-3 px-4"><span class="status-pill status-neutral">Walking Downstairs</span></td>
+                            <td class="py-3 px-4">15 mins</td>
+                            <td class="py-3 px-4 text-slate-400">Descending stairwell to ground floor</td>
+                            <td class="py-3 px-4 text-emerald-400">Normal cadence</td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 px-4 font-mono text-slate-200">14:15 - 15:45</td>
+                            <td class="py-3 px-4"><span class="status-pill status-resting">Lying Down</span></td>
+                            <td class="py-3 px-4">1h 30m</td>
+                            <td class="py-3 px-4 text-slate-400">Master bedroom, scheduled afternoon nap</td>
+                            <td class="py-3 px-4 text-slate-400">Stationary</td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 px-4 font-mono text-slate-200">12:30 - 13:30</td>
+                            <td class="py-3 px-4"><span class="status-pill status-neutral">Sitting</span></td>
+                            <td class="py-3 px-4">1h 00m</td>
+                            <td class="py-3 px-4 text-slate-400">Dining room, lunch with family visit</td>
+                            <td class="py-3 px-4 text-emerald-400">Steady</td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 px-4 font-mono text-slate-200">10:15 - 11:00</td>
+                            <td class="py-3 px-4"><span class="status-pill status-active">Walking</span></td>
+                            <td class="py-3 px-4">45 mins</td>
+                            <td class="py-3 px-4 text-slate-400">Front lawn and garden pathway</td>
+                            <td class="py-3 px-4 text-emerald-400">Good rhythm</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+</body>
+</html>

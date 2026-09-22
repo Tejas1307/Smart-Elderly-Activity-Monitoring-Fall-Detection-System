@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fall Alerts — CarePulse Senior Care</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body class="min-h-screen bg-[#0c111d] text-slate-100 flex flex-col">
+
+    <!-- Navigation -->
+    <header class="border-b border-[#1f293d] bg-[#111726] sticky top-0 z-30">
+        <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-8">
+                <a href="/" class="flex items-center gap-2.5">
+                    <div class="w-8 h-8 rounded-lg bg-teal-600 flex items-center justify-center font-bold text-white text-base">
+                        C
+                    </div>
+                    <div>
+                        <span class="font-semibold text-sm tracking-tight text-white block">CarePulse</span>
+                        <span class="text-[11px] text-slate-400 block -mt-1">Elderly Care Monitoring</span>
+                    </div>
+                </a>
+
+                <nav class="hidden md:flex items-center gap-1 text-xs font-medium">
+                    <a href="/" class="px-3 py-1.5 rounded-md text-slate-400 hover:text-slate-200 hover:bg-[#161f30] transition">Live Monitor</a>
+                    <a href="/history" class="px-3 py-1.5 rounded-md text-slate-400 hover:text-slate-200 hover:bg-[#161f30] transition">Activity History</a>
+                    <a href="/alerts" class="px-3 py-1.5 rounded-md bg-[#1c2638] text-white flex items-center gap-1.5">
+                        Fall Alerts
+                        <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                    </a>
+                    <a href="/patient" class="px-3 py-1.5 rounded-md text-slate-400 hover:text-slate-200 hover:bg-[#161f30] transition">Patient Profile</a>
+                    <a href="/device" class="px-3 py-1.5 rounded-md text-slate-400 hover:text-slate-200 hover:bg-[#161f30] transition">Wearable Device</a>
+                </nav>
+            </div>
+
+            <div class="flex items-center gap-2.5">
+                <div class="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center text-xs font-medium text-slate-200">
+                    SJ
+                </div>
+                <div class="hidden sm:block text-left">
+                    <div class="text-xs font-medium text-slate-200">Sarah Jenkins, RN</div>
+                    <div class="text-[11px] text-slate-400">Primary Caregiver</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-6xl w-full mx-auto px-6 py-8 flex-1 space-y-8">
+
+        <!-- Safety Overview Header Banner -->
+        <section class="clean-card p-6 bg-gradient-to-r from-[#122324] to-[#141d2e] border-teal-800/40">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-teal-500/20 text-teal-400 flex items-center justify-center text-2xl font-bold">
+                        ✓
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2.5">
+                            <h1 class="text-lg font-bold text-white">System Status: All Clear</h1>
+                            <span class="status-pill status-active">Monitoring Active</span>
+                        </div>
+                        <p class="text-xs text-slate-300 mt-0.5">No unresolved emergency events. IMU sensor node is communicating normally.</p>
+                    </div>
+                </div>
+
+                <div class="text-left sm:text-right text-xs text-slate-400">
+                    <div>Last Incident: <strong class="text-slate-200 font-medium">Yesterday at 16:42</strong></div>
+                    <div>Resolution: <span class="text-teal-400">Caregiver Assisted (53s)</span></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Fall Events Audit Log -->
+        <section class="clean-card p-6">
+            <div class="flex items-center justify-between mb-4">
+                <div>
+                    <h2 class="text-sm font-semibold text-white">Safety Incident Audit Log</h2>
+                    <p class="text-xs text-slate-400">Historical fall alerts requiring caregiver verification</p>
+                </div>
+                <span class="text-xs text-slate-400">Showing last 30 days</span>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-xs border-collapse">
+                    <thead>
+                        <tr class="border-b border-[#243046] text-slate-400 font-medium">
+                            <th class="py-3 px-4">Date & Time</th>
+                            <th class="py-3 px-4">Pre-Fall State</th>
+                            <th class="py-3 px-4">Impact Magnitude</th>
+                            <th class="py-3 px-4">Status</th>
+                            <th class="py-3 px-4">Response Time</th>
+                            <th class="py-3 px-4">Caregiver Summary</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-[#1e283b] text-slate-300">
+                        <tr>
+                            <td class="py-3.5 px-4 font-mono text-slate-200">Sep 21, 2026 • 16:42</td>
+                            <td class="py-3.5 px-4">Walking</td>
+                            <td class="py-3.5 px-4 font-mono text-red-400 font-semibold">3.42g</td>
+                            <td class="py-3.5 px-4"><span class="status-pill status-active">Assisted</span></td>
+                            <td class="py-3.5 px-4 font-mono text-teal-400">53 seconds</td>
+                            <td class="py-3.5 px-4 text-slate-400">Minor slip near living room carpet. Senior assisted immediately, reported no pain or injury.</td>
+                        </tr>
+                        <tr>
+                            <td class="py-3.5 px-4 font-mono text-slate-200">Sep 14, 2026 • 11:15</td>
+                            <td class="py-3.5 px-4">Sitting Down</td>
+                            <td class="py-3.5 px-4 font-mono text-amber-400 font-semibold">2.91g</td>
+                            <td class="py-3.5 px-4"><span class="status-pill status-resting">False Alarm</span></td>
+                            <td class="py-3.5 px-4 font-mono text-slate-400">35 seconds</td>
+                            <td class="py-3.5 px-4 text-slate-400">Wearable device placed briskly onto wooden nightstand during dress change. Marked false positive.</td>
+                        </tr>
+                        <tr>
+                            <td class="py-3.5 px-4 font-mono text-slate-200">Aug 28, 2026 • 08:35</td>
+                            <td class="py-3.5 px-4">Standing</td>
+                            <td class="py-3.5 px-4 font-mono text-red-400 font-semibold">3.65g</td>
+                            <td class="py-3.5 px-4"><span class="status-pill status-active">Assisted</span></td>
+                            <td class="py-3.5 px-4 font-mono text-teal-400">42 seconds</td>
+                            <td class="py-3.5 px-4 text-slate-400">Knee weakness near bed frame. Nurse assisted senior to seated posture; vitals remained stable.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Emergency Contacts & Care Protocol -->
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="clean-card p-6">
+                <h3 class="text-sm font-semibold text-white mb-3">Emergency Contact Hierarchy</h3>
+                <div class="space-y-3 text-xs">
+                    <div class="flex items-center justify-between p-3 rounded-lg bg-[#111726] border border-[#1f293d]">
+                        <div>
+                            <strong class="text-slate-100 font-medium block">David Vance (Son)</strong>
+                            <span class="text-slate-400 text-[11px]">Primary Family Contact</span>
+                        </div>
+                        <span class="font-mono text-teal-400">(555) 234-8901</span>
+                    </div>
+
+                    <div class="flex items-center justify-between p-3 rounded-lg bg-[#111726] border border-[#1f293d]">
+                        <div>
+                            <strong class="text-slate-100 font-medium block">St. Jude Community Health Clinic</strong>
+                            <span class="text-slate-400 text-[11px]">On-Call Nursing Dispatch</span>
+                        </div>
+                        <span class="font-mono text-teal-400">(555) 902-1144</span>
+                    </div>
+
+                    <div class="flex items-center justify-between p-3 rounded-lg bg-[#111726] border border-[#1f293d]">
+                        <div>
+                            <strong class="text-slate-100 font-medium block">Providence Memorial Hospital</strong>
+                            <span class="text-slate-400 text-[11px]">Designated Medical Facility</span>
+                        </div>
+                        <span class="font-mono text-slate-400">Emergency Unit</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="clean-card p-6">
+                <h3 class="text-sm font-semibold text-white mb-2">Detection Methodology</h3>
+                <p class="text-xs text-slate-300 leading-relaxed mb-4">
+                    The wearable algorithm employs a <strong>two-stage verification pipeline</strong>. It triggers when instantaneous impact deceleration exceeds $2.8\text{g}$, then validates that the senior remains motionless in a horizontal or prone posture for at least 2 seconds.
+                </p>
+                <div class="p-3 rounded-lg bg-[#111726] border border-[#1f293d] text-xs text-slate-400 space-y-1">
+                    <div>• <strong>Threshold:</strong> Impact Shock > 2.80g</div>
+                    <div>• <strong>Confirmation:</strong> 2.0s post-fall immobility verification</div>
+                    <div>• <strong>False Alarm Rejection:</strong> Sudden movements followed by upright gait are filtered automatically</div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+</body>
+</html>

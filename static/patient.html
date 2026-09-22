@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Profile — CarePulse Senior Care</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body class="min-h-screen bg-[#0c111d] text-slate-100 flex flex-col">
+
+    <!-- Top Navigation Bar -->
+    <header class="border-b border-[#1f293d] bg-[#111726] sticky top-0 z-30">
+        <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-8">
+                <a href="/" class="flex items-center gap-2.5">
+                    <div class="w-8 h-8 rounded-lg bg-teal-600 flex items-center justify-center font-bold text-white text-base">
+                        C
+                    </div>
+                    <div>
+                        <span class="font-semibold text-sm tracking-tight text-white block">CarePulse</span>
+                        <span class="text-[11px] text-slate-400 block -mt-1">Elderly Care Monitoring</span>
+                    </div>
+                </a>
+
+                <nav class="hidden md:flex items-center gap-1 text-xs font-medium">
+                    <a href="/" class="px-3 py-1.5 rounded-md text-slate-400 hover:text-slate-200 hover:bg-[#161f30] transition">Live Monitor</a>
+                    <a href="/history" class="px-3 py-1.5 rounded-md text-slate-400 hover:text-slate-200 hover:bg-[#161f30] transition">Activity History</a>
+                    <a href="/alerts" class="px-3 py-1.5 rounded-md text-slate-400 hover:text-slate-200 hover:bg-[#161f30] transition flex items-center gap-1.5">
+                        Fall Alerts
+                        <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                    </a>
+                    <a href="/patient" class="px-3 py-1.5 rounded-md bg-[#1c2638] text-white">Patient Profile</a>
+                    <a href="/device" class="px-3 py-1.5 rounded-md text-slate-400 hover:text-slate-200 hover:bg-[#161f30] transition">Wearable Device</a>
+                </nav>
+            </div>
+
+            <div class="flex items-center gap-2.5">
+                <div class="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center text-xs font-medium text-slate-200">
+                    SJ
+                </div>
+                <div class="hidden sm:block text-left">
+                    <div class="text-xs font-medium text-slate-200">Sarah Jenkins, RN</div>
+                    <div class="text-[11px] text-slate-400">Primary Caregiver</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-6xl w-full mx-auto px-6 py-8 flex-1 space-y-8">
+
+        <!-- Patient Identification Banner -->
+        <section class="clean-card p-6 bg-gradient-to-r from-[#141b29] to-[#161e2e]">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+                <div class="flex items-center gap-5">
+                    <div class="w-16 h-16 rounded-full bg-teal-900/40 border border-teal-600/30 flex items-center justify-center text-2xl font-bold text-teal-400">
+                        EV
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-3">
+                            <h1 class="text-xl font-bold text-white">Eleanor Vance</h1>
+                            <span class="status-pill status-active">Active Client</span>
+                        </div>
+                        <p class="text-xs text-slate-400 mt-1">DOB: April 14, 1948 (78 yrs) • Resident Since: Jan 2024 • File #EV-7802</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-3">
+                    <button class="px-3.5 py-2 rounded-lg bg-[#202b3f] hover:bg-[#28364f] border border-[#2b3952] text-xs font-medium text-slate-200">
+                        Edit Medical Record
+                    </button>
+                    <button class="px-3.5 py-2 rounded-lg bg-teal-700 hover:bg-teal-600 text-xs font-medium text-white">
+                        Print Care Summary
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Clinical Background & Mobility Status -->
+        <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+            <div class="clean-card p-6 space-y-4">
+                <h2 class="text-sm font-semibold text-white">Medical Conditions</h2>
+                <div class="space-y-2 text-xs">
+                    <div class="p-3 rounded-lg bg-[#111726] border border-[#1f293d]">
+                        <strong class="text-slate-100 block">Osteoarthritis (Right Knee)</strong>
+                        <span class="text-slate-400 text-[11px]">Mild joint stiffness in mornings; physical therapy twice weekly.</span>
+                    </div>
+                    <div class="p-3 rounded-lg bg-[#111726] border border-[#1f293d]">
+                        <strong class="text-slate-100 block">Hypertension (Controlled)</strong>
+                        <span class="text-slate-400 text-[11px]">Managed with Amlodipine 5mg daily. Vitals monitored daily.</span>
+                    </div>
+                    <div class="p-3 rounded-lg bg-[#111726] border border-[#1f293d]">
+                        <strong class="text-slate-100 block">Mild Presbyopia</strong>
+                        <span class="text-slate-400 text-[11px]">Corrective reading glasses recommended when navigating steps.</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="clean-card p-6 space-y-4">
+                <h2 class="text-sm font-semibold text-white">Mobility & Fall Profile</h2>
+                <div class="space-y-3 text-xs">
+                    <div class="flex justify-between items-center p-2.5 rounded bg-[#111726]">
+                        <span class="text-slate-400">Fall Risk Category:</span>
+                        <strong class="text-amber-400 font-medium">Moderate</strong>
+                    </div>
+                    <div class="flex justify-between items-center p-2.5 rounded bg-[#111726]">
+                        <span class="text-slate-400">Timed Up & Go (TUG):</span>
+                        <span class="text-slate-200 font-mono">13.8 seconds</span>
+                    </div>
+                    <div class="flex justify-between items-center p-2.5 rounded bg-[#111726]">
+                        <span class="text-slate-400">Indoor Mobility:</span>
+                        <span class="text-slate-200">Unassisted / Grab Bars</span>
+                    </div>
+                    <div class="flex justify-between items-center p-2.5 rounded bg-[#111726]">
+                        <span class="text-slate-400">Outdoor Walking:</span>
+                        <span class="text-slate-200">Single-point walking cane</span>
+                    </div>
+                    <div class="flex justify-between items-center p-2.5 rounded bg-[#111726]">
+                        <span class="text-slate-400">IMU Sensor Wear Location:</span>
+                        <span class="text-teal-400 font-medium">Right Hip Waistband</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="clean-card p-6 space-y-4">
+                <h2 class="text-sm font-semibold text-white">Care Team & Physician</h2>
+                <div class="space-y-3 text-xs">
+                    <div class="p-3 rounded-lg bg-[#111726] border border-[#1f293d]">
+                        <span class="text-[11px] text-slate-400 block">Primary Physician</span>
+                        <strong class="text-slate-100 text-sm block">Dr. Robert Chen, MD</strong>
+                        <span class="text-slate-400 text-[11px]">Geriatric Medicine • (555) 789-0123</span>
+                    </div>
+
+                    <div class="p-3 rounded-lg bg-[#111726] border border-[#1f293d]">
+                        <span class="text-[11px] text-slate-400 block">Assigned Nurse Caregiver</span>
+                        <strong class="text-slate-100 text-sm block">Sarah Jenkins, RN</strong>
+                        <span class="text-slate-400 text-[11px]">Home Visit Shift: 08:00 - 17:00</span>
+                    </div>
+
+                    <div class="p-3 rounded-lg bg-[#111726] border border-[#1f293d]">
+                        <span class="text-[11px] text-slate-400 block">Family Emergency Contact</span>
+                        <strong class="text-slate-100 text-sm block">David Vance (Son)</strong>
+                        <span class="text-slate-400 text-[11px]">Lives 10 mins away • (555) 234-8901</span>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Daily Routine & Activity Protocol -->
+        <section class="clean-card p-6">
+            <h2 class="text-sm font-semibold text-white mb-4">Assisted Living Care Routine</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 text-xs">
+                <div class="p-4 rounded-lg bg-[#111726] border border-[#1f293d]">
+                    <div class="font-mono text-teal-400 font-semibold mb-1">08:00 - 08:45</div>
+                    <strong class="text-slate-200 block">Morning Check-In</strong>
+                    <p class="text-slate-400 mt-1">Verify wearable battery, morning medication assistance, and assisted garden walk.</p>
+                </div>
+
+                <div class="p-4 rounded-lg bg-[#111726] border border-[#1f293d]">
+                    <div class="font-mono text-teal-400 font-semibold mb-1">12:30 - 13:30</div>
+                    <strong class="text-slate-200 block">Lunch & Hydration</strong>
+                    <p class="text-slate-400 mt-1">Midday meal in dining area. Check sensor positioning on clothing.</p>
+                </div>
+
+                <div class="p-4 rounded-lg bg-[#111726] border border-[#1f293d]">
+                    <div class="font-mono text-teal-400 font-semibold mb-1">14:00 - 15:30</div>
+                    <strong class="text-slate-200 block">Afternoon Rest Period</strong>
+                    <p class="text-slate-400 mt-1">Scheduled rest in master bedroom. Quiet posture monitoring active.</p>
+                </div>
+
+                <div class="p-4 rounded-lg bg-[#111726] border border-[#1f293d]">
+                    <div class="font-mono text-teal-400 font-semibold mb-1">20:30 - 21:00</div>
+                    <strong class="text-slate-200 block">Evening Vitals Check</strong>
+                    <p class="text-slate-400 mt-1">Evening blood pressure log, connect wearable to overnight charger.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+</body>
+</html>

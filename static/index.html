@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Monitor — CarePulse Senior Care</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body class="min-h-screen bg-[#0c111d] text-slate-100 flex flex-col">
+
+    <!-- Top Navigation Bar -->
+    <header class="border-b border-[#1f293d] bg-[#111726] sticky top-0 z-30">
+        <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+            
+            <!-- Brand & Product Name -->
+            <div class="flex items-center gap-8">
+                <a href="/" class="flex items-center gap-2.5">
+                    <div class="w-8 h-8 rounded-lg bg-teal-600 flex items-center justify-center font-bold text-white text-base shadow-sm">
+                        C
+                    </div>
+                    <div>
+                        <span class="font-semibold text-sm tracking-tight text-white block">CarePulse</span>
+                        <span class="text-[11px] text-slate-400 block -mt-1">Elderly Care Monitoring</span>
+                    </div>
+                </a>
+
+                <!-- Navigation Tabs -->
+                <nav class="hidden md:flex items-center gap-1 text-xs font-medium">
+                    <a href="/" class="px-3 py-1.5 rounded-md bg-[#1c2638] text-white">Live Monitor</a>
+                    <a href="/history" class="px-3 py-1.5 rounded-md text-slate-400 hover:text-slate-200 hover:bg-[#161f30] transition">Activity History</a>
+                    <a href="/alerts" class="px-3 py-1.5 rounded-md text-slate-400 hover:text-slate-200 hover:bg-[#161f30] transition flex items-center gap-1.5">
+                        Fall Alerts
+                        <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                    </a>
+                    <a href="/patient" class="px-3 py-1.5 rounded-md text-slate-400 hover:text-slate-200 hover:bg-[#161f30] transition">Patient Profile</a>
+                    <a href="/device" class="px-3 py-1.5 rounded-md text-slate-400 hover:text-slate-200 hover:bg-[#161f30] transition">Wearable Device</a>
+                </nav>
+            </div>
+
+            <!-- Caregiver Info & Device Status -->
+            <div class="flex items-center gap-4">
+                <div class="hidden sm:flex items-center gap-2 text-xs text-slate-300 pr-4 border-r border-[#1f293d]">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                    <span class="font-medium">Sensor Online (84%)</span>
+                </div>
+                <div class="flex items-center gap-2.5">
+                    <div class="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center text-xs font-medium text-slate-200">
+                        SJ
+                    </div>
+                    <div class="hidden sm:block text-left">
+                        <div class="text-xs font-medium text-slate-200">Sabrina</div>
+                        <div class="text-[11px] text-slate-400">Primary Caregiver</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- Main Content: Scrollable Page Layout -->
+    <main class="max-w-6xl w-full mx-auto px-6 py-8 flex-1 space-y-8">
+
+        <!-- Patient Header Card -->
+        <section class="clean-card p-6 bg-gradient-to-r from-[#141b29] to-[#161e2e]">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div class="flex items-start gap-4">
+                    <div class="w-14 h-14 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-xl font-semibold text-teal-400">
+                        EV
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2.5">
+                            <h1 class="text-lg font-bold text-white">Taylor Swift</h1>
+                            <span class="status-pill status-active">Safe & Monitored</span>
+                        </div>
+                        <p class="text-xs text-slate-400 mt-1">78 years old • Home: 402 Elmwood St (Living Room) • ID: #EV-7802</p>
+                        <div class="flex flex-wrap items-center gap-4 mt-3 text-xs text-slate-300">
+                            <span>Fall Risk: <strong class="text-amber-400 font-medium">Moderate (Morning)</strong></span>
+                            <span class="text-slate-500">•</span>
+                            <span>Wearable: <strong class="text-slate-200 font-medium">Waistband IMU Node</strong></span>
+                            <span class="text-slate-500">•</span>
+                            <span>Care Routine: <strong class="text-slate-200 font-medium">Assisted Daily Check</strong></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-3 self-start md:self-center">
+                    <a href="tel:+15550192" class="px-3.5 py-2 rounded-lg bg-[#202b3f] hover:bg-[#28364f] border border-[#2b3952] text-xs font-medium text-slate-200 transition">
+                        Call Senior Home
+                    </a>
+                    <a href="/alerts" class="px-3.5 py-2 rounded-lg bg-teal-700 hover:bg-teal-600 text-xs font-medium text-white transition">
+                        View Safety Log
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Current Real-Time Status & Key Metrics -->
+        <section class="grid grid-cols-1 md:grid-cols-12 gap-6">
+
+            <!-- Real-Time Activity Card (7 cols) -->
+            <div class="md:col-span-7 clean-card p-6 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-xs font-semibold uppercase tracking-wider text-slate-400">Current Movement Status</span>
+                        <span id="liveStatusBadge" class="status-pill status-active">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Real-time
+                        </span>
+                    </div>
+
+                    <div class="my-4">
+                        <div class="text-xs text-teal-400 font-medium mb-1">Recognized State</div>
+                        <h2 id="currentActivityTitle" class="text-3xl font-bold text-white tracking-tight">Walking</h2>
+                        <p id="activityNotes" class="text-xs text-slate-400 mt-1">Continuous normal gait detected. Senior is moving around the room.</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-3 gap-3 pt-4 border-t border-[#1f293d] text-center">
+                    <div class="bg-[#111726] p-3 rounded-lg border border-[#1f293d]">
+                        <span class="text-[11px] text-slate-400 block">AI Confidence</span>
+                        <span id="liveConfidence" class="text-base font-semibold text-emerald-400 mt-0.5 block">94.8%</span>
+                    </div>
+                    <div class="bg-[#111726] p-3 rounded-lg border border-[#1f293d]">
+                        <span class="text-[11px] text-slate-400 block">Movement Intensity</span>
+                        <span id="liveIntensity" class="text-base font-semibold text-blue-400 mt-0.5 block">Moderate</span>
+                    </div>
+                    <div class="bg-[#111726] p-3 rounded-lg border border-[#1f293d]">
+                        <span class="text-[11px] text-slate-400 block">Fall Risk Index</span>
+                        <span class="text-base font-semibold text-slate-200 mt-0.5 block">Normal</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Today's Cumulative Overview (5 cols) -->
+            <div class="md:col-span-5 clean-card p-6 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-xs font-semibold uppercase tracking-wider text-slate-400">Today's Summary</span>
+                        <span class="text-xs text-slate-400">Since 6:00 AM</span>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between text-xs text-slate-300 mb-1">
+                                <span>Active Movement (Walking / Stairs)</span>
+                                <span id="statActiveTime" class="font-semibold text-white">2h 10m</span>
+                            </div>
+                            <div class="w-full h-2 bg-slate-800 rounded-full overflow-hidden">
+                                <div id="barActive" class="h-full bg-teal-500 rounded-full" style="width: 25%"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-xs text-slate-300 mb-1">
+                                <span>Sedentary (Sitting / Armchair)</span>
+                                <span id="statSittingTime" class="font-semibold text-white">5h 20m</span>
+                            </div>
+                            <div class="w-full h-2 bg-slate-800 rounded-full overflow-hidden">
+                                <div id="barSitting" class="h-full bg-amber-500 rounded-full" style="width: 50%"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-xs text-slate-300 mb-1">
+                                <span>Resting / Lying Down</span>
+                                <span id="statRestingTime" class="font-semibold text-white">2h 30m</span>
+                            </div>
+                            <div class="w-full h-2 bg-slate-800 rounded-full overflow-hidden">
+                                <div id="barResting" class="h-full bg-slate-400 rounded-full" style="width: 25%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-4 pt-4 border-t border-[#1f293d] flex items-center justify-between text-xs text-slate-400">
+                    <span>Recorded Falls: <strong class="text-emerald-400 font-semibold">0 incidents today</strong></span>
+                    <a href="/history" class="text-teal-400 hover:underline">Full breakdown &rarr;</a>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Chronological Movement Feed (Scrollable) -->
+        <section class="clean-card p-6">
+            <div class="flex items-center justify-between mb-4">
+                <div>
+                    <h3 class="text-sm font-semibold text-white">Recent Activity Timeline</h3>
+                    <p class="text-xs text-slate-400">Continuous sequence of detected movements today</p>
+                </div>
+                <a href="/history" class="text-xs text-teal-400 hover:text-teal-300 font-medium">View Detailed Log</a>
+            </div>
+
+            <div id="recentActivityFeed" class="space-y-3">
+                <div class="flex items-start gap-4 p-3 rounded-lg bg-[#111726] border border-[#1f293d] text-xs">
+                    <span class="w-2 h-2 rounded-full bg-teal-400 mt-1.5 shrink-0"></span>
+                    <div class="flex-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                        <div>
+                            <strong class="text-slate-100 font-medium">Walking</strong>
+                            <span class="text-slate-400 ml-1.5">— Continuous pace in living room</span>
+                        </div>
+                        <span class="text-slate-400 font-mono text-[11px]">Just now (Active)</span>
+                    </div>
+                </div>
+
+                <div class="flex items-start gap-4 p-3 rounded-lg bg-[#111726] border border-[#1f293d] text-xs">
+                    <span class="w-2 h-2 rounded-full bg-amber-400 mt-1.5 shrink-0"></span>
+                    <div class="flex-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                        <div>
+                            <strong class="text-slate-100 font-medium">Sitting</strong>
+                            <span class="text-slate-400 ml-1.5">— Resting in living room armchair</span>
+                        </div>
+                        <span class="text-slate-400 font-mono text-[11px]">20:15 - 21:20 (1h 5m)</span>
+                    </div>
+                </div>
+
+                <div class="flex items-start gap-4 p-3 rounded-lg bg-[#111726] border border-[#1f293d] text-xs">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 mt-1.5 shrink-0"></span>
+                    <div class="flex-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                        <div>
+                            <strong class="text-slate-100 font-medium">Standing</strong>
+                            <span class="text-slate-400 ml-1.5">— Kitchen counter, preparing tea</span>
+                        </div>
+                        <span class="text-slate-400 font-mono text-[11px]">19:45 - 20:15 (30m)</span>
+                    </div>
+                </div>
+
+                <div class="flex items-start gap-4 p-3 rounded-lg bg-[#111726] border border-[#1f293d] text-xs">
+                    <span class="w-2 h-2 rounded-full bg-purple-400 mt-1.5 shrink-0"></span>
+                    <div class="flex-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                        <div>
+                            <strong class="text-slate-100 font-medium">Walking Downstairs</strong>
+                            <span class="text-slate-400 ml-1.5">— Stepping down to main floor</span>
+                        </div>
+                        <span class="text-slate-400 font-mono text-[11px]">19:30 - 19:45 (15m)</span>
+                    </div>
+                </div>
+
+                <div class="flex items-start gap-4 p-3 rounded-lg bg-[#111726] border border-[#1f293d] text-xs">
+                    <span class="w-2 h-2 rounded-full bg-slate-400 mt-1.5 shrink-0"></span>
+                    <div class="flex-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                        <div>
+                            <strong class="text-slate-100 font-medium">Lying Down</strong>
+                            <span class="text-slate-400 ml-1.5">— Afternoon rest in upstairs bedroom</span>
+                        </div>
+                        <span class="text-slate-400 font-mono text-[11px]">14:15 - 15:45 (1h 30m)</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Caregiver Quick Notes & Next Visit -->
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="clean-card p-6">
+                <h3 class="text-sm font-semibold text-white mb-2">Caregiver Shift Notes</h3>
+                <p class="text-xs text-slate-300 leading-relaxed mb-4">
+                    "Eleanor reported feeling well during lunch. Mobility was steady when walking to the garden. Reminded her to wear the IMU clip securely at the right hip."
+                </p>
+                <div class="flex items-center justify-between text-[11px] text-slate-400 pt-3 border-t border-[#1f293d]">
+                    <span>Logged by Nurse Sabrina at 16:30</span>
+                    <button class="text-teal-400 hover:underline">Add Note</button>
+                </div>
+            </div>
+
+            <div class="clean-card p-6">
+                <h3 class="text-sm font-semibold text-white mb-2">Scheduled Check-Ins</h3>
+                <div class="space-y-2.5 text-xs text-slate-300">
+                    <div class="flex items-center justify-between p-2 rounded bg-[#111726] border border-[#1f293d]">
+                        <span>Evening Medication Check</span>
+                        <span class="font-mono text-slate-400">22:00</span>
+                    </div>
+                    <div class="flex items-center justify-between p-2 rounded bg-[#111726] border border-[#1f293d]">
+                        <span>Morning Assisted Walk</span>
+                        <span class="font-mono text-slate-400">Tomorrow 08:00</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Discreet Presentation Demonstration Bar (Subtle & Clean) -->
+        <section class="clean-card p-4 bg-[#111726]/60 border border-[#222d42]">
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-3">
+                <div class="text-xs text-slate-400 text-center sm:text-left">
+                    <span class="font-medium text-slate-200">Interactive Demo:</span> Select a movement state to preview how the dashboard updates:
+                </div>
+                <div class="flex flex-wrap items-center justify-center gap-1.5">
+                    <button onclick="setSimState('Walking')" class="px-2.5 py-1 rounded bg-[#1c2638] hover:bg-[#253249] text-xs text-slate-200 border border-[#26334a]">Walking</button>
+                    <button onclick="setSimState('Sitting')" class="px-2.5 py-1 rounded bg-[#1c2638] hover:bg-[#253249] text-xs text-slate-200 border border-[#26334a]">Sitting</button>
+                    <button onclick="setSimState('Standing')" class="px-2.5 py-1 rounded bg-[#1c2638] hover:bg-[#253249] text-xs text-slate-200 border border-[#26334a]">Standing</button>
+                    <button onclick="setSimState('Lying')" class="px-2.5 py-1 rounded bg-[#1c2638] hover:bg-[#253249] text-xs text-slate-200 border border-[#26334a]">Lying</button>
+                    <button onclick="triggerFallTest()" class="px-2.5 py-1 rounded bg-rose-900/40 hover:bg-rose-900/60 text-rose-300 border border-rose-800 text-xs font-medium">Test Fall Alert</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Emergency Fall Alert Modal (Simple, Clean, Medical Grade) -->
+    <div id="fallModal" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm hidden items-center justify-center p-4">
+        <div class="clean-card max-w-md w-full p-6 bg-[#161e2e] border-2 border-red-500 shadow-2xl text-center">
+            <div class="w-12 h-12 mx-auto rounded-full bg-red-500/20 text-red-400 flex items-center justify-center text-xl font-bold mb-3">
+                !
+            </div>
+            <h3 class="text-lg font-bold text-white mb-1">Fall Alert Triggered</h3>
+            <p class="text-xs text-slate-300 mb-5">
+                The wearable sensor detected a sharp impact deceleration followed by motionless posture for Taylor Switft.
+            </p>
+
+            <div class="bg-[#111726] p-3 rounded-lg border border-[#1f293d] text-left text-xs mb-5 space-y-1.5">
+                <div class="flex justify-between">
+                    <span class="text-slate-400">Impact Force:</span>
+                    <strong class="text-red-400 font-mono">3.8g</strong>
+                </div>
+                <div class="flex justify-between">
+                    <span class="text-slate-400">Location:</span>
+                    <span class="text-slate-200">Home — Living Room</span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="text-slate-400">Time:</span>
+                    <span id="alertTime" class="text-slate-200 font-mono">Just Now</span>
+                </div>
+            </div>
+
+            <div class="flex gap-2.5">
+                <button onclick="closeFallModal('ACKNOWLEDGED')" class="flex-1 py-2.5 px-4 rounded-lg bg-teal-600 hover:bg-teal-500 text-white font-medium text-xs">
+                    Confirm Assistance
+                </button>
+                <button onclick="closeFallModal('FALSE_ALARM')" class="py-2.5 px-4 rounded-lg bg-[#202b3f] hover:bg-[#28364f] text-slate-300 text-xs">
+                    False Alarm
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Clean, Simple Client Script -->
+    <script>
+        function setSimState(state) {
+            const title = document.getElementById("currentActivityTitle");
+            const notes = document.getElementById("activityNotes");
+            const conf = document.getElementById("liveConfidence");
+            const intensity = document.getElementById("liveIntensity");
+
+            title.innerText = state;
+            conf.innerText = "95.2%";
+
+            const descriptions = {
+                "Walking": "Continuous normal gait detected. Senior is moving around the room.",
+                "Sitting": "Senior is seated upright in an armchair or chair.",
+                "Standing": "Stationary upright posture detected near kitchen counter.",
+                "Lying": "Resting or reclining state detected in bed."
+            };
+            notes.innerText = descriptions[state] || "Monitored state.";
+            intensity.innerText = (state === 'Walking') ? 'Moderate' : 'Low';
+
+            // Also inform backend if server is active
+            fetch('/api/simulator/activity', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ activity: state })
+            }).catch(() => {});
+        }
+
+        function triggerFallTest() {
+            document.getElementById("alertTime").innerText = new Date().toLocaleTimeString();
+            document.getElementById("fallModal").classList.remove("hidden");
+            document.getElementById("fallModal").classList.add("flex");
+        }
+
+        function closeFallModal(status) {
+            document.getElementById("fallModal").classList.add("hidden");
+            document.getElementById("fallModal").classList.remove("flex");
+        }
+    </script>
+
+</body>
+</html>

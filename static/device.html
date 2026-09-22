@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wearable Device — CarePulse Senior Care</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body class="min-h-screen bg-[#0c111d] text-slate-100 flex flex-col">
+
+    <!-- Top Navigation Bar -->
+    <header class="border-b border-[#1f293d] bg-[#111726] sticky top-0 z-30">
+        <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-8">
+                <a href="/" class="flex items-center gap-2.5">
+                    <div class="w-8 h-8 rounded-lg bg-teal-600 flex items-center justify-center font-bold text-white text-base">
+                        C
+                    </div>
+                    <div>
+                        <span class="font-semibold text-sm tracking-tight text-white block">CarePulse</span>
+                        <span class="text-[11px] text-slate-400 block -mt-1">Elderly Care Monitoring</span>
+                    </div>
+                </a>
+
+                <nav class="hidden md:flex items-center gap-1 text-xs font-medium">
+                    <a href="/" class="px-3 py-1.5 rounded-md text-slate-400 hover:text-slate-200 hover:bg-[#161f30] transition">Live Monitor</a>
+                    <a href="/history" class="px-3 py-1.5 rounded-md text-slate-400 hover:text-slate-200 hover:bg-[#161f30] transition">Activity History</a>
+                    <a href="/alerts" class="px-3 py-1.5 rounded-md text-slate-400 hover:text-slate-200 hover:bg-[#161f30] transition flex items-center gap-1.5">
+                        Fall Alerts
+                        <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                    </a>
+                    <a href="/patient" class="px-3 py-1.5 rounded-md text-slate-400 hover:text-slate-200 hover:bg-[#161f30] transition">Patient Profile</a>
+                    <a href="/device" class="px-3 py-1.5 rounded-md bg-[#1c2638] text-white">Wearable Device</a>
+                </nav>
+            </div>
+
+            <div class="flex items-center gap-2.5">
+                <div class="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center text-xs font-medium text-slate-200">
+                    SJ
+                </div>
+                <div class="hidden sm:block text-left">
+                    <div class="text-xs font-medium text-slate-200">Sarah Jenkins, RN</div>
+                    <div class="text-[11px] text-slate-400">Primary Caregiver</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-6xl w-full mx-auto px-6 py-8 flex-1 space-y-8">
+
+        <!-- Device Status Overview -->
+        <section class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+                <h1 class="text-xl font-bold text-white">Wearable Node Diagnostics</h1>
+                <p class="text-xs text-slate-400 mt-1">Hardware telemetry and sensor health for Eleanor Vance's wearable device</p>
+            </div>
+
+            <div class="flex items-center gap-2">
+                <span class="status-pill status-active">Online • 50 Hz Streaming</span>
+                <span class="text-xs text-slate-400 font-mono">Firmware v1.2.4</span>
+            </div>
+        </section>
+
+        <!-- Hardware Status Cards -->
+        <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div class="clean-card p-5">
+                <span class="text-xs text-slate-400 block">Battery Level (Li-Po)</span>
+                <div class="text-2xl font-bold text-white mt-1">84%</div>
+                <div class="w-full h-1.5 bg-slate-800 rounded-full mt-2 overflow-hidden">
+                    <div class="h-full bg-emerald-500 rounded-full" style="width: 84%"></div>
+                </div>
+                <span class="text-[11px] text-slate-400 mt-1.5 block font-mono">~14 hrs estimated remaining</span>
+            </div>
+
+            <div class="clean-card p-5">
+                <span class="text-xs text-slate-400 block">Wi-Fi Connection</span>
+                <div class="text-2xl font-bold text-white mt-1">-63 dBm</div>
+                <span class="text-[11px] text-teal-400 mt-1 block">Strong Signal • 802.11 b/g/n</span>
+                <span class="text-[11px] text-slate-400 block mt-0.5">SSID: Home-Vance-5G</span>
+            </div>
+
+            <div class="clean-card p-5">
+                <span class="text-xs text-slate-400 block">Sampling Frequency</span>
+                <div class="text-2xl font-bold text-white mt-1 font-mono">50 Hz</div>
+                <span class="text-[11px] text-slate-400 mt-1 block">20ms sampling window</span>
+                <span class="text-[11px] text-slate-400 block mt-0.5">25 samples per batch</span>
+            </div>
+
+            <div class="clean-card p-5">
+                <span class="text-xs text-slate-400 block">Round-Trip Latency</span>
+                <div class="text-2xl font-bold text-white mt-1 font-mono">22 ms</div>
+                <span class="text-[11px] text-emerald-400 mt-1 block">Optimal transmission</span>
+                <span class="text-[11px] text-slate-400 block mt-0.5">Zero dropped packets</span>
+            </div>
+        </section>
+
+        <!-- Detailed Specifications & Calibration -->
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+            <div class="clean-card p-6 space-y-4">
+                <h2 class="text-sm font-semibold text-white">Hardware & Sensor Specifications</h2>
+                <div class="space-y-2.5 text-xs">
+                    <div class="flex justify-between items-center p-2.5 rounded bg-[#111726]">
+                        <span class="text-slate-400">Microcontroller:</span>
+                        <span class="text-slate-200 font-medium">ESP32 Dual-Core 240MHz</span>
+                    </div>
+                    <div class="flex justify-between items-center p-2.5 rounded bg-[#111726]">
+                        <span class="text-slate-400">Motion Sensor:</span>
+                        <span class="text-slate-200 font-medium">InvenSense MPU6050 (6-DOF)</span>
+                    </div>
+                    <div class="flex justify-between items-center p-2.5 rounded bg-[#111726]">
+                        <span class="text-slate-400">Bus Interface:</span>
+                        <span class="text-slate-200 font-mono">I²C (Pins 21 SDA, 22 SCL @ 400kHz)</span>
+                    </div>
+                    <div class="flex justify-between items-center p-2.5 rounded bg-[#111726]">
+                        <span class="text-slate-400">Accelerometer Range:</span>
+                        <span class="text-slate-200 font-mono">±2g (16384 LSB/g)</span>
+                    </div>
+                    <div class="flex justify-between items-center p-2.5 rounded bg-[#111726]">
+                        <span class="text-slate-400">Gyroscope Range:</span>
+                        <span class="text-slate-200 font-mono">±250 deg/s (131 LSB/deg/s)</span>
+                    </div>
+                    <div class="flex justify-between items-center p-2.5 rounded bg-[#111726]">
+                        <span class="text-slate-400">Wear Position:</span>
+                        <span class="text-teal-400 font-medium">Waistband Clip (Vertical Z-Axis)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="clean-card p-6 space-y-4 flex flex-col justify-between">
+                <div>
+                    <h2 class="text-sm font-semibold text-white mb-2">Device Management & Controls</h2>
+                    <p class="text-xs text-slate-300 leading-relaxed mb-4">
+                        Perform routine sensor calibration or trigger the onboard haptic vibration motor to confirm physical connection with the senior.
+                    </p>
+                    <div class="space-y-2">
+                        <button onclick="alert('Sent gentle vibration test prompt to ESP32 wearable.')" class="w-full py-2.5 px-4 rounded-lg bg-[#202b3f] hover:bg-[#28364f] border border-[#2b3952] text-xs font-medium text-slate-200 text-left flex justify-between items-center">
+                            <span>Test Device Vibration Motor</span>
+                            <span class="text-teal-400 font-mono text-[11px]">Send Prompt</span>
+                        </button>
+                        <button onclick="alert('Sensor zero-point calibrated successfully.')" class="w-full py-2.5 px-4 rounded-lg bg-[#202b3f] hover:bg-[#28364f] border border-[#2b3952] text-xs font-medium text-slate-200 text-left flex justify-between items-center">
+                            <span>Recalibrate Gyro Zero-Point</span>
+                            <span class="text-slate-400 font-mono text-[11px]">Calibrate</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="p-3 rounded-lg bg-[#111726] border border-[#1f293d] text-xs text-slate-400">
+                    Last Zero-Offset Calibration: <strong class="text-slate-200 font-normal">Today at 07:30 AM (Auto)</strong>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+</body>
+</html>
